@@ -17,7 +17,7 @@ import requests
 
 
 def create_database(db_file: pathlib.Path):
-    base_folder = pathlib.Path('sql')
+    base_folder = pathlib.Path(__file__).parent / 'sql'
     sql_files = [
         base_folder / 'locations.sql',
         base_folder / 'media.sql'
@@ -363,6 +363,10 @@ if __name__ == '__main__':
         help='Directory to export files.')
 
     args = parser.parse_args()
+
+    if args.subparser_name is None:
+        parser.exit(parser.format_help())
+
     if args.subparser_name == 'create':
         if args.database.exists():
             print(f"Database file '{args.database}' already exists.")
