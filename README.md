@@ -21,6 +21,23 @@ source env/bin/activate  # activate virtual environment
 pip3 install -r requirements.txt
 ```
 
+## Container runtime
+
+To build app container image:
+
+```bash
+docker build -t adamsbricks/snapchat-map-scraper .
+```
+
+To run app as container:
+
+```bash
+# windows
+docker run --rm -it -v %cd%:/data adamsbricks/snapchat-map-scraper
+
+# linux/macos
+docker run --rm -it -v $(pwd):/data adamsbricks/snapchat-map-scraper
+```
 
 ## Usage
 
